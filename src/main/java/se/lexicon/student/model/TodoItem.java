@@ -7,11 +7,11 @@ import java.time.LocalDate;
 public class TodoItem {
     private static int itemCount = 0;
     private int id;
-    public String title;
-    public String taskDescription;
-    public LocalDate deadLine;
-    public boolean done;
-    public Person creator;
+    public String title; //according to the UML diagram this variable is not supposed to be private(?)
+    public String taskDescription; //according to the UML diagram this variable is not supposed to be private(?)
+    public LocalDate deadLine; //according to the UML diagram this variable is not supposed to be private(?)
+    public boolean done; //according to the UML diagram this variable is not supposed to be private(?)
+    public Person creator; //according to the UML diagram this variable is not supposed to be private(?)
 
     public TodoItem(String title, String taskDescription, LocalDate deadLine, boolean done, Person creator) {
         ++itemCount;
@@ -75,11 +75,11 @@ public class TodoItem {
     public String getSummary() {
         return "TodoItem{" +
                 "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + taskDescription + '\'' +
+                ", title=" + title +
+                ", description=" + taskDescription +
                 ", deadline=" + deadLine +
                 ", done=" + done +
-                ", creator='" + "Id:" + creator.getId() + ", Name: " + creator.getFirstName() + " " + creator.getLastName() + '\'' +
+                ", creator=Id:" + creator.getId() + ", Task Creator: " + creator.getFirstName() + " " + creator.getLastName() +
                 '}';
     }
 
