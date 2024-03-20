@@ -52,7 +52,12 @@ public class Person {
         return email;
     }
 
-    public void getSummary() {
-        System.out.println("Id: " + id + ", " + firstName + " " + lastName + ", Email: " + email);
+    public String getSummary() {
+        return "Person{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
