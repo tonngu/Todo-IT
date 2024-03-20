@@ -7,11 +7,11 @@ import java.time.LocalDate;
 public class TodoItem {
     private static int itemCount = 0;
     private int id;
-    private String title;
-    private String taskDescription;
-    private LocalDate deadLine;
-    private boolean done;
-    private Person creator;
+    public String title;
+    public String taskDescription;
+    public LocalDate deadLine;
+    public boolean done;
+    public Person creator;
 
     public TodoItem(String title, String taskDescription, LocalDate deadLine, boolean done, Person creator) {
         ++itemCount;
