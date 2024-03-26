@@ -3,6 +3,7 @@ package se.lexicon.student.model;
 
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class TodoItem {
     private static int itemCount = 0;
@@ -72,15 +73,43 @@ public class TodoItem {
         return LocalDate.now().isAfter(this.deadLine);
     }
 
-    public String getSummary() {
+    @Override
+    public String toString() {
         return "TodoItem{" +
                 "id=" + id +
-                ", title=" + title +
-                ", description=" + taskDescription +
-                ", deadline=" + deadLine +
+                ", title='" + title + '\'' +
+                ", taskDescription='" + taskDescription + '\'' +
+                ", deadLine=" + deadLine +
                 ", done=" + done +
-                ", creator=Id:" + creator.getId() + ", Task Creator: " + creator.getFirstName() + " " + creator.getLastName() +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        TodoItem other = (TodoItem) obj;
+        return id == other.id &&
+                done == other.done &&
+                Objects.equals(title, other.title) &&
+                Objects.equals(taskDescription, other.taskDescription) &&
+                Objects.equals(deadLine, other.deadLine);
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + id;
+        result = prime * result + (done ? 1231 : 1237);
+        result = prime * result + ((title == null) ? 0 : title.hashCode());
+        result = prime * result + ((taskDescription == null) ? 0 : taskDescription.hashCode());
+        result = prime * result + ((deadLine == null) ? 0 : deadLine.hashCode());
+        return result;
     }
 
 }

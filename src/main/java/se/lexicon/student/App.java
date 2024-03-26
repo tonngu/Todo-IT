@@ -18,15 +18,13 @@ public class App
 
         Person anna = new Person("Anna","Holm","anna.holm@home.se");
 
-        //System.out.println(bruno.getSummary());
-
         TodoItem washDishes = new TodoItem("washDishes", "Don't use too much hot water", LocalDate.of(2024, 03, 20 ), false, anna);
 
-        System.out.println(washDishes.getSummary());
+        System.out.println(washDishes.toString());
 
         TodoItemTask washDishesTask = new TodoItemTask(washDishes,bruno);
 
-        System.out.println(washDishesTask.getSummary());
+        System.out.println(washDishesTask.toString());
     }
 
 }

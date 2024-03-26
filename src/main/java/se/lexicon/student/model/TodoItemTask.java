@@ -1,5 +1,7 @@
 package se.lexicon.student.model;
 
+import java.util.Objects;
+
 public class TodoItemTask {
     private static int taskCount = 0;
     private int id;
@@ -43,12 +45,36 @@ public class TodoItemTask {
         this.assignee = assignee;
     }
 
-    public String getSummary() {
+    @Override
+    public String toString() {
         return "TodoItemTask{" +
                 "id=" + id +
                 ", assigned=" + assigned +
-                ", todoitem=" + "Id: " + todoitem.getId() + ", Title: " + todoitem.getTitle() + ", Description: " + todoitem.getTaskDescription() + ", Deadline: " + todoitem.getDeadLine() + ", Done: " + todoitem.isDone() +
-                ", assignee=" + "Id: " + assignee.getId() + ", Assignee: " + assignee.getFirstName() + " " + assignee.getLastName() +
+                ", todoitem=" + todoitem +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        TodoItemTask other = (TodoItemTask) obj;
+        return id == other.id &&
+                assigned == other.assigned &&
+                Objects.equals(todoitem, other.todoitem);
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + id;
+        result = prime * result + (assigned ? 1231 : 1237);
+        result = prime * result + ((todoitem == null) ? 0 : todoitem.hashCode());
+        return result;
     }
 }
