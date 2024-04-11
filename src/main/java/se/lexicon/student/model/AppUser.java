@@ -13,6 +13,10 @@ public class AppUser {
         this.role = role;
     }
 
+    public AppUser(String username, String password) {
+        this(username, password, AppRole.ROLE_APP_USER);
+    }
+
     public String getUsername() {
         return username;
     }
