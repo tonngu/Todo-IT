@@ -3,15 +3,12 @@ package se.lexicon.student.model;
 import java.util.Objects;
 
 public class TodoItemTask {
-    private static int taskCount = 0;
     private int id;
     private boolean assigned;
     private TodoItem todoitem;
     private Person assignee; //the person who's assigned to do the task
 
     public TodoItemTask(TodoItem todoitem, Person assignee) {
-        ++taskCount;
-        this.id = taskCount;;
         setTodoitem(todoitem);
         setAssignee(assignee);
         if (this.assignee != null) {
@@ -35,6 +32,14 @@ public class TodoItemTask {
         if (todoitem == null) {
             throw new IllegalArgumentException("A task Todo must be included.");}
         this.todoitem = todoitem;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public Person getAssignee() {

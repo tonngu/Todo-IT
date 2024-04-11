@@ -3,7 +3,6 @@ package se.lexicon.student.model;
 import java.util.Objects;
 
 public class Person {
-    private static int PersonCount = 0;
     private int id;
     private String firstName;
     private String lastName;
@@ -11,8 +10,6 @@ public class Person {
     private AppUser credentials;
 
     public Person(String firstName, String lastName, String email) {
-        ++PersonCount;
-        this.id = PersonCount;
         setFirstName(firstName);
         setLastName(lastName);
         setEmail(email);
@@ -30,6 +27,10 @@ public class Person {
             throw new IllegalArgumentException("Last name cannot be null or empty.");
         }
         this.lastName = lastName;
+    }
+
+    public void setId(int id){
+        this.id = id;
     }
 
     public AppUser getCredentials() {

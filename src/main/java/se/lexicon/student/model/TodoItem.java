@@ -2,26 +2,28 @@ package se.lexicon.student.model;
 
 
 
-import java.time.LocalDate;
+
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class TodoItem {
-    private static int itemCount = 0;
     private int id;
     public String title; //according to the UML diagram this variable is not supposed to be private(?)
     public String taskDescription; //according to the UML diagram this variable is not supposed to be private(?)
-    public LocalDate deadLine; //according to the UML diagram this variable is not supposed to be private(?)
+    public LocalDateTime deadline; //according to the UML diagram this variable is not supposed to be private(?)
     public boolean done; //according to the UML diagram this variable is not supposed to be private(?)
     public Person creator; //according to the UML diagram this variable is not supposed to be private(?)
 
-    public TodoItem(String title, String taskDescription, LocalDate deadLine, boolean done, Person creator) {
-        ++itemCount;
-        this.id = itemCount;
+    public TodoItem(String title, String taskDescription, LocalDateTime deadLine, boolean done, Person creator) {
         setTitle(title);
         this.taskDescription = taskDescription;
-        setDeadLine(deadLine);
+        setDeadline(deadline);
         setDone(done);
         setCreator(creator);
+    }
+
+    public void setId(int id){
+        this.id = id;
     }
 
     public void setTitle(String title) {
@@ -31,10 +33,10 @@ public class TodoItem {
         this.title = title;
     }
 
-    public void setDeadLine(LocalDate deadline) {
+    public void setDeadline(LocalDateTime deadline) {
         if (deadline == null) {
             throw new IllegalArgumentException("Deadline must be included.");}
-        this.deadLine = deadline;
+        this.deadline = deadline;
     }
 
     public void setDone(boolean done) {
@@ -57,8 +59,8 @@ public class TodoItem {
         return taskDescription;
     }
 
-    public LocalDate getDeadLine() {
-        return deadLine;
+    public LocalDateTime getDeadline() {
+        return deadline;
     }
 
     public boolean isDone() {
@@ -70,7 +72,7 @@ public class TodoItem {
     }
 
     public boolean isOverdue(){
-        return LocalDate.now().isAfter(this.deadLine);
+        return LocalDateTime.now().isAfter(this.deadline);
     }
 
     @Override
@@ -79,7 +81,7 @@ public class TodoItem {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", taskDescription='" + taskDescription + '\'' +
-                ", deadLine=" + deadLine +
+                ", deadline=" + deadline +
                 ", done=" + done +
                 '}';
     }
@@ -97,7 +99,7 @@ public class TodoItem {
                 done == other.done &&
                 Objects.equals(title, other.title) &&
                 Objects.equals(taskDescription, other.taskDescription) &&
-                Objects.equals(deadLine, other.deadLine);
+                Objects.equals(deadline, other.deadline);
     }
 
     @Override
@@ -108,7 +110,7 @@ public class TodoItem {
         result = prime * result + (done ? 1231 : 1237);
         result = prime * result + ((title == null) ? 0 : title.hashCode());
         result = prime * result + ((taskDescription == null) ? 0 : taskDescription.hashCode());
-        result = prime * result + ((deadLine == null) ? 0 : deadLine.hashCode());
+        result = prime * result + ((deadline == null) ? 0 : deadline.hashCode());
         return result;
     }
 
